@@ -1,0 +1,42 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+
+# Packaging/build
+build/
+dist/
+*.egg
+*.egg-info/
+fastapi_uv_app.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Testing
+.pytest_cache/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# Editors/OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node/Front-end (if any)
+node_modules/
+
+# uv
+# Note: keep uv.lock committed for reproducibility
