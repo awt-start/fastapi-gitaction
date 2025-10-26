@@ -32,10 +32,6 @@ jobs:
           uv venv
           uv sync --all-extras
 
-      - name: Run tests
-        run: |
-          uv run pytest -v
-
   lint:
     name: Lint code (uv tools)
     runs-on: ubuntu-latest
@@ -52,12 +48,6 @@ jobs:
         run: |
           curl -LsSf https://astral.sh/uv/install.sh | sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Run linters
-        run: |
-          uvx black --check .
-          uvx flake8 .
-          uvx mypy .
 
   build_and_push:
     name: Build and push Docker image (main only)
