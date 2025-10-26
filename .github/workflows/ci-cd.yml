@@ -32,16 +32,9 @@ jobs:
           uv venv
           uv sync --all-extras
 
-      - name: Run tests with coverage
+      - name: Run tests
         run: |
-          uv run pytest -v --cov=app --cov-report=xml
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          file: ./coverage.xml
-          flags: unittests
-          name: codecov-umbrella
+          uv run pytest -v
 
   lint:
     name: Lint code (uv tools)
