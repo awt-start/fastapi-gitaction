@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: fastapi-uv-app
+        working-directory: .
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('fastapi-uv-app/requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
@@ -45,16 +45,13 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
-          file: ./fastapi-uv-app/coverage.xml
+          file: ./coverage.xml
           flags: unittests
           name: codecov-umbrella
 
   lint:
     name: Lint code
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: fastapi-uv-app
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -115,8 +112,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: fastapi-uv-app
-          file: fastapi-uv-app/Dockerfile
+          context: .
+          file: Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
